@@ -1,0 +1,15 @@
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+crime = pd.read_csv("Crime_Data_from_2020_to_2024_20260508.csv")
+
+crime.columns = crime.columns.str.replace(' ', '_')
+crime.columns
+crime= crime.drop(columns=["AREA_NAME","Part_1-2","Crm_Cd_Desc",
+                   "Mocodes","Premis_Desc","Weapon_Desc","Status_Desc",
+                   "Crm_Cd_4","LOCATION","Cross_Street","LAT","LON"])
+crime = crime.drop(columns=['Crm_Cd_2', 'Crm_Cd_3'])
